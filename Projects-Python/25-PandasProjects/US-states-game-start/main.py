@@ -20,10 +20,11 @@ while len(user_guessed_state) < 50:
 
     # checking for user wants to exit and Saving data to CSV
     if ans_state == "Exit":
-        missing_state_list = []
-        for eachState in all_states:
-            if eachState not in user_guessed_state:
-                missing_state_list.append(state) 
+        missing_state_list = [eachState for eachState in all_states if eachState not in user_guessed_state]
+        # for eachState in all_states:
+        #     if eachState not in user_guessed_state:
+        #         missing_state_list.append(state) 
+        
         new_data = pandas.DataFrame(missing_state_list)
         new_data.to_csv("Missed_States.csv")
         break    
